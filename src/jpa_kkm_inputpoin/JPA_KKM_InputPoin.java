@@ -8,6 +8,7 @@ package jpa_kkm_inputpoin;
 import entity.PoinMahasiswa;
 import java.util.List;
 import service.PoinMahasiswaService;
+import view.view;
 
 /**
  *
@@ -16,7 +17,7 @@ import service.PoinMahasiswaService;
 public class JPA_KKM_InputPoin {
 
     private static void tambah(){
-        PoinMahasiswa pm = new PoinMahasiswa("672020272", "Edwin", 100, 200, 0, 0);
+        PoinMahasiswa pm = new PoinMahasiswa("672020273", "Ramadhan", 150, 250, 200, 75);
         new PoinMahasiswaService().createPoinMahasiswa(pm);
     }
     private static void lihat(){
@@ -35,8 +36,9 @@ public class JPA_KKM_InputPoin {
     public static void main(String[] args) {
         //tambah();
         //hapus();
-        update();
-        lihat();
+        //update();
+        //lihat();
+        new view().setVisible(true);
     }
 
 }
