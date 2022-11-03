@@ -6,6 +6,8 @@ package view;
 
 import entity.PoinMahasiswa;
 import java.util.List;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.YES_NO_OPTION;
 import javax.swing.table.DefaultTableModel;
 import service.PoinMahasiswaService;
 
@@ -44,8 +46,8 @@ public class view extends javax.swing.JFrame {
     }    
     
     private void resetTextField(){
-        nimTextField.setText("");
-        namaTextField.setText("");
+        nimTextField.setText("NIM");
+        namaTextField.setText("Nama");
         ombTextField.setText("");
         profesionalTextField.setText("");
         kemanusiaanTextField.setText("");
@@ -80,8 +82,12 @@ public class view extends javax.swing.JFrame {
         totalLabel = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         predikatLabel = new javax.swing.JLabel();
+        saveButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
+        updateButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Arsip Poin KKM Mahasiswa FTI UKSW");
 
         tablePoin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -102,8 +108,24 @@ public class view extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablePoin);
 
         nimTextField.setText("NIM");
+        nimTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nimTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                nimTextFieldFocusLost(evt);
+            }
+        });
 
         namaTextField.setText("Nama");
+        namaTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                namaTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                namaTextFieldFocusLost(evt);
+            }
+        });
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("TOTAL");
@@ -161,6 +183,27 @@ public class view extends javax.swing.JFrame {
         predikatLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         predikatLabel.setText("Cukup");
 
+        saveButton.setText("SAVE");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
+
+        deleteButton.setText("DELETE");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
+
+        updateButton.setText("UPDATE");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -170,6 +213,12 @@ public class view extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -217,7 +266,11 @@ public class view extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(nimTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -304,6 +357,95 @@ public class view extends javax.swing.JFrame {
         resetTextField();
     }//GEN-LAST:event_addButtonActionPerformed
 
+    private void nimTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nimTextFieldFocusGained
+        // Place Holder NIM TextField Focus Gained
+        if(nimTextField.getText().equals("NIM")){
+            nimTextField.setText("");
+        }
+     
+    }//GEN-LAST:event_nimTextFieldFocusGained
+
+    private void nimTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nimTextFieldFocusLost
+        // Place Holder NIM TextField Focus Lost
+        if(nimTextField.getText().equals("")){
+            nimTextField.setText("NIM");
+        }
+    }//GEN-LAST:event_nimTextFieldFocusLost
+
+    private void namaTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_namaTextFieldFocusGained
+        // Place Holder Nama TextField Focus Gained
+        if(namaTextField.getText().equals("Nama")){
+            namaTextField.setText("");
+        }
+    }//GEN-LAST:event_namaTextFieldFocusGained
+
+    private void namaTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_namaTextFieldFocusLost
+        // Place Holder Nama TextField Focus Lost
+        if(namaTextField.getText().equals("")){
+            namaTextField.setText("Nama");
+        }
+    }//GEN-LAST:event_namaTextFieldFocusLost
+
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        if(!nimTextField.getText().equals("NIM") && !namaTextField.getText().equals("Nama")){
+            //Aliasing Object Poin Mahasiswa
+            PoinMahasiswa pm = new PoinMahasiswa();
+
+            //Zero input protection
+            String omb, profesional, kemanusiaan, penunjang;
+            omb = (ombTextField.getText().isEmpty()) ? ("0") : (omb = ombTextField.getText());
+            profesional = (profesionalTextField.getText().isEmpty()) ? ("0") : (profesional = profesionalTextField.getText());
+            kemanusiaan = (kemanusiaanTextField.getText().isEmpty()) ? ("0") : (kemanusiaan = kemanusiaanTextField.getText());
+            penunjang = (penunjangTextField.getText().isEmpty()) ? ("0") : (penunjang = penunjangTextField.getText());
+            
+            //Set Model with current Text Field Value
+            pm.setNim(nimTextField.getText());
+            pm.setNama(namaTextField.getText());
+            pm.setOmb(Integer.parseInt(omb));
+            pm.setProfesional(Integer.parseInt(profesional));
+            pm.setKemanusiaan(Integer.parseInt(kemanusiaan));
+            pm.setPenunjang(Integer.parseInt(penunjang));
+
+            //Void Insert Data 
+            new PoinMahasiswaService().createPoinMahasiswa(pm);
+
+            JOptionPane.showMessageDialog(this, "Berhasil Simpan Data");
+            tampilkanDataPoinMahasiswa();
+            resetTextField();
+        }else{
+            JOptionPane.showMessageDialog(this, "Lengkapi NIM & nama terlebih dahulu");
+        }
+    }//GEN-LAST:event_saveButtonActionPerformed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        //True = 0
+        if(!nimTextField.getText().equals("NIM") && !namaTextField.getText().equals("Nama")){
+            int konfirmasi = JOptionPane.showConfirmDialog(this, "Apakah anda yakin ingin menghapus", "Konfirmasi", YES_NO_OPTION);
+            if(konfirmasi == 0){
+                new PoinMahasiswaService().deletePoinMahasiswa(nimTextField.getText());
+                JOptionPane.showMessageDialog(this, "Berhasil Menghapus Data");
+                resetTextField();
+                tampilkanDataPoinMahasiswa();
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Pilih data yang ingin dihapus");
+        }
+//        System.out.println());
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        if(!nimTextField.getText().equals("NIM") && !namaTextField.getText().equals("Nama")){
+            
+            PoinMahasiswa pm = new PoinMahasiswa(nimTextField.getText(), namaTextField.getText(),Integer.parseInt(ombTextField.getText()), Integer.parseInt(profesionalTextField.getText()), Integer.parseInt(kemanusiaanTextField.getText()), Integer.parseInt(penunjangTextField.getText()));
+            new PoinMahasiswaService().updatePoinMahasiswa(pm);
+            resetTextField();
+            tampilkanDataPoinMahasiswa();
+            JOptionPane.showMessageDialog(this, "Berhasil Update Data");
+        }else{
+            JOptionPane.showMessageDialog(this, "Pilih data yang ingin di update");
+        }
+    }//GEN-LAST:event_updateButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -341,6 +483,7 @@ public class view extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -362,7 +505,9 @@ public class view extends javax.swing.JFrame {
     private javax.swing.JTextField penunjangTextField;
     private javax.swing.JLabel predikatLabel;
     private javax.swing.JTextField profesionalTextField;
+    private javax.swing.JButton saveButton;
     private javax.swing.JTable tablePoin;
     private javax.swing.JLabel totalLabel;
+    private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }
