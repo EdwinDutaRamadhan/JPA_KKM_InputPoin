@@ -16,23 +16,23 @@ import view.view;
  */
 public class JPA_KKM_InputPoin {
 
-    private static void tambah(){
-        PoinMahasiswa pm = new PoinMahasiswa("672020273", "Ramadhan", 150, 250, 200, 75);
-        new PoinMahasiswaService().createPoinMahasiswa(pm);
-    }
-    private static void lihat(){
-        List<PoinMahasiswa> listPM = new PoinMahasiswaService().listPoinMahasiswa();
-        for(PoinMahasiswa poinMahasiswa : listPM){
-            System.out.println(poinMahasiswa.getNim()+ " | " + poinMahasiswa.getNama() + " | OMB : " + poinMahasiswa.getOmb() + " | Profesional : " + poinMahasiswa.getProfesional() + " | Kemanusiaan :  " + poinMahasiswa.getKemanusiaan() + " | Penunjang : " + poinMahasiswa.getPenunjang() );
-        }
-    }
-    private static void hapus(){
-        new PoinMahasiswaService().deletePoinMahasiswa("672020272");
-    }
-    private static void update(){
-        PoinMahasiswa pm = new PoinMahasiswa("672020272", "Edwin Duta",100, 200, 0, 0);
-        new PoinMahasiswaService().updatePoinMahasiswa(pm);
-    }
+//    private static void tambah(){
+//        PoinMahasiswa pm = new PoinMahasiswa("672020273", "Ramadhan", 150, 250, 200, 75);
+//        new PoinMahasiswaService().createPoinMahasiswa(pm);
+//    }
+//    private static void lihat(){
+//        List<PoinMahasiswa> listPM = new PoinMahasiswaService().listPoinMahasiswa();
+//        for(PoinMahasiswa poinMahasiswa : listPM){
+//            System.out.println(poinMahasiswa.getNim()+ " | " + poinMahasiswa.getNama() + " | OMB : " + poinMahasiswa.getOmb() + " | Profesional : " + poinMahasiswa.getProfesional() + " | Kemanusiaan :  " + poinMahasiswa.getKemanusiaan() + " | Penunjang : " + poinMahasiswa.getPenunjang() );
+//        }
+//    }
+//    private static void hapus(){
+//        new PoinMahasiswaService().deletePoinMahasiswa("672020272");
+//    }
+//    private static void update(){
+//        PoinMahasiswa pm = new PoinMahasiswa("672020272", "Edwin Duta",100, 200, 0, 0);
+//        new PoinMahasiswaService().updatePoinMahasiswa(pm);
+//    }
     public static void main(String[] args) {
         //tambah();
         //hapus();

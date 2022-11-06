@@ -53,6 +53,14 @@ public class PoinMahasiswaService {
         List<PoinMahasiswa> listPM = (List<PoinMahasiswa>) query.getResultList();
         return listPM;
     }
+    public List<PoinMahasiswa> listPoinMahasiswaSingle(String nim){
+        
+        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("PoinKKM");
+        EntityManager entityManager = emfactory.createEntityManager();
+        Query query = entityManager.createQuery("Select m from PoinMahasiswa m Where nim="+nim);
+        List<PoinMahasiswa> listPM = (List<PoinMahasiswa>) query.getResultList();
+        return listPM;
+    }
     
     //Delete data
     public void deletePoinMahasiswa(String nim){
